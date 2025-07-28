@@ -20,7 +20,8 @@ const playerTypes = [
   {
     key: "tumbler",
     title: "The Tumbler",
-    description: "Low-ball hitters who are accurate with above average short game",
+    description:
+      "Low-ball hitters who are accurate with above average short game",
   },
   {
     key: "riser",
@@ -31,12 +32,14 @@ const playerTypes = [
   {
     key: "floater",
     title: "The Floater",
-    description: "High ball flight, accurate with irons and below average short game.",
+    description:
+      "High ball flight, accurate with irons and below average short game.",
   },
   {
     key: "knuckler",
     title: "The Knuckler",
-    description: "High ball flight, maximizing distance from tee with average approach and short games.",
+    description:
+      "High ball flight, maximizing distance from tee with average approach and short games.",
   },
 ];
 
@@ -77,7 +80,6 @@ const GolfQuestions = () => {
 
   const handleSubmit = () => {
     setStep("loading");
-
     const storedUser = localStorage.getItem("user_info");
     const golfProfile = JSON.parse(
       localStorage.getItem("golfProfile") as string
@@ -89,6 +91,9 @@ const GolfQuestions = () => {
 
     updateUser({
       userId,
+      dateOfBirth:"",
+      handicap:"",
+      gender:"",
       golfProfile: {
         ...golfProfile,
         playerType: answers["playerType"],
@@ -108,13 +113,23 @@ const GolfQuestions = () => {
   };
 
   const StepIndicator = () => (
-    <Box display="flex" justifyContent="center" alignItems="center" gap={1} mt={2} mb={4}>
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      gap={1}
+      mt={2}
+      mb={4}
+    >
       <Box
         sx={{
           height: 4,
           width: 120,
           borderRadius: 2,
-          background: step === "step1" ? "linear-gradient(to right, #00c6ff, #00ff95)" : "#333",
+          background:
+            step === "step1"
+              ? "linear-gradient(to right, #00c6ff, #00ff95)"
+              : "#333",
           transition: "0.3s",
         }}
       />
@@ -123,7 +138,10 @@ const GolfQuestions = () => {
           height: 4,
           width: 120,
           borderRadius: 2,
-          background: step === "step2" ? "linear-gradient(to right, #00c6ff, #00ff95)" : "#333",
+          background:
+            step === "step2"
+              ? "linear-gradient(to right, #00c6ff, #00ff95)"
+              : "#333",
           transition: "0.3s",
         }}
       />
@@ -131,15 +149,24 @@ const GolfQuestions = () => {
   );
 
   const GolfLoaderOrSuccess = () => (
-    <Box display="flex" alignItems="center" justifyContent="center" height="80vh">
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      height="80vh"
+    >
       <Box display="flex" alignItems="center" gap={1}>
         <img src="/images/logo.png" alt="Golf Icon" width={40} />
         <Typography variant="h6" fontWeight={600}>
           {step === "loading" && "Creating Player Profile"}
           {step === "created" && "Success!"}
         </Typography>
-        {step === "loading" && <CircularProgress size={20} sx={{ color: "#00ff95" }} />}
-        {step === "created" && <CheckCircleIcon sx={{ color: "#00ff95", fontSize: 24 }} />}
+        {step === "loading" && (
+          <CircularProgress size={20} sx={{ color: "#00ff95" }} />
+        )}
+        {step === "created" && (
+          <CheckCircleIcon sx={{ color: "#00ff95", fontSize: 24 }} />
+        )}
       </Box>
     </Box>
   );
@@ -289,7 +316,9 @@ const GolfQuestions = () => {
                               ? "2px solid #00ff95"
                               : "1px solid #333",
                           backgroundColor:
-                            answers[q.key] === option.value ? "#1a1a1a" : "#0b0c0e",
+                            answers[q.key] === option.value
+                              ? "#1a1a1a"
+                              : "#0b0c0e",
                         }}
                       >
                         {option.label}

@@ -16,19 +16,14 @@ import {
 } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import SettingsIcon from "@mui/icons-material/Settings";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CloseIcon from "@mui/icons-material/Close";
 import { useRouter } from "next/navigation";
 import { useLazyGetAllGolfCoursesQuery } from "../../../../lib/redux/golfCourseApi/golfCourseApi";
 import { useSession } from "next-auth/react";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import WaterDropIcon from "@mui/icons-material/WaterDrop";
-import AirIcon from "@mui/icons-material/Air";
-
 import FeedbackIcon from "@mui/icons-material/Feedback";
 import LogoutIcon from "@mui/icons-material/Logout";
 import DeleteIcon from "@mui/icons-material/Delete";
-import SlideScreen from "./SlideScreen";
 import EditProfileScreen from "./EditProfileScreen";
 import CurrentSessionCard from "./currentSession";
 
@@ -223,24 +218,28 @@ const HomeScreen = () => {
             <Button
               variant="contained"
               fullWidth
-              disabled
+              onClick={() => router.push("/popularCoursepage")}
               sx={{
                 color: "#ffffff",
                 backgroundColor: "#101518",
-                "&.Mui-disabled": {
-                  color: "#ffffff",
-                  backgroundColor: "#101518",
+                opacity: 0.7,
+                pointerEvents: "auto",
+                "&:hover": {
+                  backgroundColor: "#1a1f24",
+                  opacity: 1,
                 },
               }}
             >
               Start Playing
             </Button>
+
             <Button
+              onClick={() => router.push("/popularCoursepage")}
               sx={{
                 minWidth: "42px",
                 height: "42px",
                 backgroundColor: "#21e58e",
-                color: "#ffff",
+                color: "#fff",
                 borderRadius: 2,
                 "&:hover": { backgroundColor: "#101518" },
               }}
@@ -251,7 +250,7 @@ const HomeScreen = () => {
         </Box>
 
         {/* Current Session */}
-              <CurrentSessionCard/>
+        <CurrentSessionCard />
 
         {/* Popular Courses */}
         <Typography variant="subtitle1" sx={{ px: 2, pt: 3, fontWeight: 600 }}>
@@ -304,7 +303,10 @@ const HomeScreen = () => {
           },
         }}
       >
-        <EditProfileScreen onClose={() => setOpenEditProfile(false)} userId={""} />
+        <EditProfileScreen
+          onClose={() => setOpenEditProfile(false)}
+          userId={""}
+        />
       </Drawer>
     </>
   );

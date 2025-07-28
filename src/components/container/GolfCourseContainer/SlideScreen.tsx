@@ -19,9 +19,10 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState } from "react";
-  const [openSettings, setOpenSettings] = useState(false);
 
 const SlideScreen = () => {
+  const [openSettings, setOpenSettings] = useState(false);
+
   return (
     <Box
       sx={{
